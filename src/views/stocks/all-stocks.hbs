@@ -1,0 +1,30 @@
+<div class="row">
+    {{#each stocks}}
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title d-flex justify-content-between align-items-center">
+                    {{title}} <a href="/stocks/{{_id}}/edit"><i class="fas fa-edit"></i></a>
+                </h4>
+                <p>{{description}}</p>
+                <p>{{amount}} </p>
+                <p>{{price}}</p>
+                <form action="/stocks/{{_id}}?_method=DELETE" method="POST">
+                <input type="hidden" name="_method" value="DELETE">
+                    <button class="btn btn-danger btn-block btn-sm">
+                        Delete
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <div class="card mx-auto">
+        <div class="card-body">
+            <h1> Hola {{user.name}} !</h1>
+            <p class="lead"> No hay stocks todavia</p>
+            <a href="/stocks/add" class="btn btn-success btn-block"> Crea un stock</a>
+        </div>
+    </div>
+    {{/each}}
+</div>
